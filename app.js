@@ -79,6 +79,9 @@ app.post("/upload", upload.single("image"), async (req, res, next) => {
         return res.status(400).json({ status: "error", message: err.message })
     }
 })
+app.get("/health", (req, res, next) => {
+    res.status(200).json({ status: "sucess" })
+})
 app.use("*", (req, res, next) => {
     res.status(404).json({ status: "error", message: "Incorrect Route or method" })
 })
