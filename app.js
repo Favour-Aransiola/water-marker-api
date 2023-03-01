@@ -7,6 +7,7 @@ const app = express()
 const jimp = require("jimp")
 const dotEnv = require("dotenv").config()
 const cloudinary = require("cloudinary").v2
+const cors = require("cors")
 
 
 const storage = multer.diskStorage({
@@ -36,6 +37,8 @@ const upload = multer({
 })
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(bodyparser.json())
+app.use(cors())
+
 
 cloudinary.config({
     api_key: process.env.API_KEY,
